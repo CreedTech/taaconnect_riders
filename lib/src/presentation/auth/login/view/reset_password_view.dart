@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 import '../../../../core/core.dart';
 import '../../../../widgets/custom_success_screen.dart';
 import '../../../../widgets/custom_text_field.dart';
@@ -166,7 +165,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                                               info:
                                                   'Password has been changed successfully',
                                               route: login,
-                                              buttonTitle: 'Login',
+                                              buttonTitle: 'Sign in',
                                             ),
                                           ),
                                           (route) => false);

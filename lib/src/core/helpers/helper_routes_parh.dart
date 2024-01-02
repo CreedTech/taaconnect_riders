@@ -10,6 +10,7 @@ const login = "/login";
 const register = "/register";
 const phone_number_otp = "/phone_number_otp";
 const finish = "/finish";
+const vehicleDocumentation = "/vehicleDocumentation";
 const forgotPass = "/forgotPass";
 const forgotPass_otp_verify = "/forgotPass_otp_verify";
 const otp_verify = "/otp_verify";
@@ -49,6 +50,9 @@ const help = '/help';
 
 // Search Path
 const search = '/search';
+
+// Search Path
+const earning = '/earning';
 
 // Custom
 const success = '/success';

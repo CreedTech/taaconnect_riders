@@ -101,23 +101,28 @@ class _ForgotPasswordOtpVerificationConsumerState
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 15.w),
+              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 30.w),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.topLeft,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Wrap(
-                          // mainAxisAlignment: MainAxisAlignment.center,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           // spacing: 8.0,
                           // runSpacing: 8.0,
                           children: [
                             Text(
-                              'We sent a code to your email ',
+                              'We sent a code to ',
                               style: TextStyle(
                                 color: Colors.grey.shade700,
-                                fontSize: 14.sp,
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -127,7 +132,7 @@ class _ForgotPasswordOtpVerificationConsumerState
                                 widget.email,
                                 style: TextStyle(
                                   color: colorPrimary,
-                                  fontSize: 14.sp,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -138,7 +143,7 @@ class _ForgotPasswordOtpVerificationConsumerState
                     ),
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 24,
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -147,8 +152,8 @@ class _ForgotPasswordOtpVerificationConsumerState
                         key: otprestpwdFormKey,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 8.0,
-                            horizontal: 14,
+                            vertical: 0.0,
+                            horizontal: 0,
                           ),
                           child: PinCodeTextField(
                             appContext: context,
@@ -218,7 +223,7 @@ class _ForgotPasswordOtpVerificationConsumerState
                         ),
                       ),
                       SizedBox(
-                        height: 20.h,
+                        height: 0.h,
                       ),
                       Align(
                         alignment: Alignment.bottomCenter,
@@ -246,13 +251,12 @@ class _ForgotPasswordOtpVerificationConsumerState
                               //   otpController.clear();
                               // }
                               Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ResetPasswordView(
-                                                email: 'widget.email'),
-                                      ),
-                                    );
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ResetPasswordView(email: 'widget.email'),
+                                ),
+                              );
                               // Navigator.pushAndRemoveUntil(
                               //     context,
                               //     MaterialPageRoute(
