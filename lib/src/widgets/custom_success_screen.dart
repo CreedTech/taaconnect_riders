@@ -31,7 +31,7 @@ class CustomSuccessScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/logo.png',
+                      'assets/images/logo_single.png',
                       height: 70.h,
                     ),
                     SizedBox(
@@ -54,7 +54,7 @@ class CustomSuccessScreen extends StatelessWidget {
                     Text(
                       info,
                       textAlign: TextAlign.center,
-                    ).normalSized(14.sp).colors(colorsBlack),
+                    ).normalSized(18.sp).colors(colorsBlack),
                     SizedBox(
                       height: 50.h,
                     ),

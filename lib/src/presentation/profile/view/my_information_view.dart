@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/core.dart';
+import '../../../widgets/custom_text_field.dart';
 import '../../auth/login/view/forgot_password_view.dart';
 import '../../auth/login/view/reset_password_view.dart';
 
@@ -14,10 +15,71 @@ class MyInformationView extends StatefulWidget {
 }
 
 class _MyInformationViewState extends State<MyInformationView> {
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _mailController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final infoKey = GlobalKey<FormState>();
+  String? selectedGender;
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _mailController.dispose();
+    _phoneNumberController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final gender = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DropdownButtonFormField(
+          style: GoogleFonts.nunito(
+            fontSize: 14.sp,
+            color: colorsBlack,
+          ),
+          items: ['Male', 'Female', 'Other']
+              .map((value) => DropdownMenuItem(
+                    value: value,
+                    child: Text(value),
+                  ))
+              .toList(),
+          value: selectedGender,
+          onChanged: (String? newValue) {
+            setState(() {
+              selectedGender = newValue!;
+              // genderValue = selectedGender == 'Male' ? 1 : 2;
+            });
+            print(selectedGender);
+          },
+          decoration: InputDecoration(
+            labelText: 'Gender',
+            labelStyle: GoogleFonts.nunito(color: colorGray),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5.sp),
+              borderSide: const BorderSide(color: Color(0xffA4A5A6)),
+            ),
+            // enabledBorder: Color(value),
+            // prefixIcon: prefixIcon,
+            hintText: 'Gender',
+            errorStyle: GoogleFonts.nunito(
+                fontSize: 12.sp, fontWeight: FontWeight.w600),
+            hintStyle: GoogleFonts.nunito(color: textGray),
+            // errorText: errorText,
+            // suffixIcon: icon,
+            filled: false,
+            // fillColor: colorGray,
+            contentPadding: EdgeInsets.all(14.sp),
+          ),
+          // maxLines: 1,
+        ),
+      ],
+    );
+
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 120,
         centerTitle: true,
         backgroundColor: colorWhite,
         elevation: 0,
@@ -30,121 +92,141 @@ class _MyInformationViewState extends State<MyInformationView> {
             color: colorsBlack,
           ),
         ),
-        title: Text(
-          'My Information',
-        ).boldSized(22.sp).colors(colorsBlack),
+        title: Image.asset(
+          'assets/images/logo_single.png',
+          height: 80.h,
+        ),
       ),
-      body: Padding(
-        padding:
-            EdgeInsets.only(top: 10.h, left: 16.w, right: 16.w, bottom: 32.h),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0),
-              child: ListTile(
-                minLeadingWidth: 0,
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(
-                  Icons.person_outline,
-                  color: colorsBlack,
-                ),
-                title: Text(
-                  'Solomon',
-                  style: GoogleFonts.nunito(
-                    color: colorsBlack,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0),
-              child: ListTile(
-                minLeadingWidth: 0,
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(
-                  Icons.mail_outline,
-                  color: colorsBlack,
-                ),
-                title: Text(
-                  'natureboyyy21@gmail.com',
-                  style: GoogleFonts.nunito(
-                    color: colorsBlack,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                // onTap: () {
-                //   Navigator.pushNamed(context, my_information);
-                // },
-                // trailing: Icon(
-                //   Icons.arrow_forward_ios,
-                //   color: colorGray,
-                //   size: 20.sp,
-                // ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0),
-              child: ListTile(
-                minLeadingWidth: 0,
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(
-                  Icons.lock_outline,
-                  color: colorsBlack,
-                ),
-                title: Text(
-                  'Change Password',
-                  style: GoogleFonts.nunito(
-                    color: colorsBlack,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ForgotPasswordView(),
+      body: SafeArea(
+        child: Padding(
+          padding:
+              EdgeInsets.only(top: 10.h, left: 16.w, right: 16.w, bottom: 32.h),
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Personal information',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  );
-                },
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: colorGray,
-                  size: 20.sp,
-                ),
+                  ),
+                  Form(
+                    key: infoKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          // labelText: 'Email Address',
+                          hintText: '',
+                          controller: _fullNameController,
+                          legend: 'Full Name',
+
+                          keyboardType: TextInputType.text,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Enter Full Name';
+                            }
+                            return null;
+                          },
+                        ),
+                        CustomTextField(
+                          // prefixIcon: Image.asset(
+                          //   'assets/icons/bank.png',
+                          //   scale: 4,
+                          // ),
+                          // labelText: 'Email Address',
+                          hintText: '',
+                          controller: _mailController,
+                          legend: 'Enter your email',
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Input a valid email address';
+                            }
+                            if (!value.contains('@')) {
+                              return 'Include @ symbol in your email';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 24.h),
+                        gender,
+                        // SizedBox(height: 24.h),
+                        CustomTextField(
+                          // labelText: 'Email Address',
+                          hintText: '',
+                          controller: _phoneNumberController,
+                          legend: 'Phone Number',
+
+                          keyboardType: TextInputType.text,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Phone Number cannot be empty';
+                            }
+                            if (value.length < 11) {
+                              return 'Phone Number is invalid';
+                            }
+                            if (int.tryParse(value) == null) {
+                              return 'enter valid Phone Number';
+                            }
+                            return null;
+                          },
+                        ),
+                        // SizedBox(
+                        //   height: 120,
+                        // ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0),
-              child: ListTile(
-                minLeadingWidth: 0,
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(
-                  Icons.phone_android_outlined,
-                  color: colorsBlack,
-                ),
-                title: Text(
-                  'Change Phone Number',
-                  style: GoogleFonts.nunito(
-                    color: colorsBlack,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                    // Navigator.pushAndRemoveUntil(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => CustomSuccessScreen(
+                    //       info:
+                    //           'Your withdrawal is been processed and the recipient bank will be credited shortly ',
+                    //       route: home,
+                    //       title: 'Successful',
+                    //       buttonTitle: 'Done',
+                    //     ),
+                    //   ),
+                    //   (route) => false,
+                    // );
+                    // if (loginFormKey.currentState!.validate()) {
+                    //   authState.signIn(
+                    //       context,
+                    //       _emailController.text.trim(),
+                    //       _passwordController.text.trim());
+                    // }
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 48,
+                    // padding: EdgeInsets.symmetric(vertical: 15.h),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: colorPrimary,
+                      borderRadius: BorderRadius.all(Radius.circular(88.sp)),
+                    ),
+                    child: Text(
+                      'Save Changes',
+                      style: TextStyle(fontSize: 14.sp, color: Colors.white),
+                    ),
                   ),
                 ),
-                onTap: () {
-                  Navigator.pushNamed(context, change_phone_number);
-                },
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: colorGray,
-                  size: 20.sp,
-                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

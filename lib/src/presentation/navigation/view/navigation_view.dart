@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taaconnect_riders/src/presentation/view/earning.dart';
+import 'package:taaconnect_riders/src/presentation/earning/view/earning.dart';
 // import 'package:lastmile/src/presentation/history/bloc/history/history_bloc.dart';
 // import 'package:lastmile/src/presentation/home/bloc/home/home_bloc.dart';
 // import 'package:lastmile/src/presentation/order/bloc/order/order_bloc.dart';
@@ -27,14 +27,14 @@ class _NavigationViewsState extends State<NavigationViews> {
   IconData _homeIcon = Icons.home_outlined;
 
   String _historyIcon = ('assets/icons/truck.png');
-  String _orderIcon = ('assets/icons/order.png');
+  String _orderIcon = ('assets/icons/wallet.png');
   IconData _profileIcon = Icons.person_outline;
 
   IconData _defaultHomeIcon = Icons.home_outlined;
 
   String _defaultHistoryIcon = ('assets/icons/truck.png');
 
-  String _defaultOrderIcon = ('assets/icons/order.png');
+  String _defaultOrderIcon = ('assets/icons/wallet.png');
   IconData _defaultProfileIcon = Icons.person_outline;
   void _onItemTapped(int index) {
     setState(() {
@@ -131,99 +131,6 @@ class _NavigationViewsState extends State<NavigationViews> {
         ));
   }
 
-  // List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
-  //   return [
-  //     PersistentBottomNavBarItem(
-  //       contentPadding: 0,
-  //       title: 'Home',
-  //       textStyle: const TextStyle(color: colorWhite),
-  //       activeColorPrimary: colorPrimary,
-  //       icon: SvgPicture.asset(
-  //         "assets/icons/home.svg",
-  //         height: 20.h,
-  //         width: 20.w,
-  //         color: colorPrimary,
-  //       ),
-  //       inactiveIcon: SvgPicture.asset(
-  //         "assets/icons/home.svg",
-  //         height: 20.h,
-  //         width: 20.w,
-  //         color: colorWhite,
-  //       ),
-  //     ),
-  //     // PersistentBottomNavBarItem(
-  //     //   icon: SvgPicture.asset(
-  //     //     "assets/icons/order.svg",
-  //     //     color: colorPrimary,
-  //     //     height: 20.h,
-  //     //     width: 20.w,
-  //     //   ),
-  //     //   inactiveIcon: SvgPicture.asset(
-  //     //     "assets/icons/order.svg",
-  //     //     height: 20.h,
-  //     //     width: 20.w,
-  //     //     color: Theme.of(context).brightness == Brightness.dark
-  //     //         ? colorWhite
-  //     //         : colorsBlack,
-  //     //   ),
-  //     // ),
-  //     PersistentBottomNavBarItem(
-  //       title: 'History',
-  //       textStyle: const TextStyle(color: colorWhite),
-  //       icon: SvgPicture.asset(
-  //         "assets/icons/history.svg",
-  //         height: 20.h,
-  //         width: 20.w,
-  //         color: colorPrimary,
-  //       ),
-  //       inactiveIcon: SvgPicture.asset(
-  //         "assets/icons/history.svg",
-  //         height: 20.h,
-  //         width: 20.w,
-  //         color: colorWhite,
-  //       ),
-  //     ),
-  //   ];
-  // }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return PersistentTabView(
-  //     context,
-  //     screens: _buildScreens(),
-  //     items: _navBarsItems(context),
-  //     navBarHeight: 65.h,
-  //     backgroundColor: colorsBlack,
-  //     confineInSafeArea: true,
-  //     resizeToAvoidBottomInset: true,
-  //     stateManagement: true,
-  //     hideNavigationBarWhenKeyboardShows: true,
-  //     decoration: const NavBarDecoration(
-  //       boxShadow: [
-  //         BoxShadow(
-  //           color: Colors.black12,
-  //           blurRadius: 0.2,
-  //           spreadRadius: 0.2,
-  //         ),
-  //       ],
-  //       // borderRadius: BorderRadius.only(
-  //       //     topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-  //       colorBehindNavBar: Colors.white,
-  //     ),
-  //     popAllScreensOnTapOfSelectedTab: true,
-  //     popActionScreens: PopActionScreensType.all,
-  //     itemAnimationProperties: const ItemAnimationProperties(
-  //       duration: Duration(milliseconds: 100),
-  //       curve: Curves.ease,
-  //     ),
-  //     screenTransitionAnimation: const ScreenTransitionAnimation(
-  //       animateTabTransition: true,
-  //       curve: Curves.ease,
-  //       duration: Duration(milliseconds: 200),
-  //     ),
-  //     navBarStyle: NavBarStyle.style6,
-  //   );
-  // }
 
   Widget _buildPage(int index) {
     switch (index) {

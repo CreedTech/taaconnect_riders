@@ -14,6 +14,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final bool obscureText;
   final int maxLines;
+  final int? maxlength;
   final TextInputType keyboardType;
   final String? errorText;
   final void Function(String)? onChanged;
@@ -24,7 +25,7 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     this.labelText = "",
-     this.hintText,
+    this.hintText,
     required this.controller,
     this.icon,
     this.prefixIcon,
@@ -34,6 +35,7 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.errorText,
     this.onChanged,
+    this.maxlength,
     required this.legend,
     // this.successMessage,
     this.willContainPrefix = false,
@@ -56,6 +58,7 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
         TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           autofocus: true,
           keyboardType: keyboardType,
           obscureText: obscureText,
@@ -65,7 +68,7 @@ class CustomTextField extends StatelessWidget {
             fontSize: 14.sp,
             color: colorsBlack,
           ),
-
+          maxLength: maxlength,
           decoration: InputDecoration(
             labelText: legend,
             labelStyle: GoogleFonts.nunito(color: colorGray),
@@ -87,7 +90,7 @@ class CustomTextField extends StatelessWidget {
           ),
           maxLines: 1,
           validator: validator,
-          //  onChanged: onChanged,
+           onChanged: onChanged,
         ),
       ],
     );

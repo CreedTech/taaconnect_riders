@@ -23,6 +23,7 @@ const home = "/home";
 
 /// Details Path
 const details = "/details";
+const verification = "/verification";
 const package_details = "/package_details";
 const pickup_terminal = "/pickup_terminal";
 const delivery_address = "/delivery_address";
@@ -47,12 +48,16 @@ const terms_conditions = '/terms_conditions';
 const faqs = '/faqs';
 const about_us = '/about_us';
 const help = '/help';
+const vehicle = '/vehicle';
 
 // Search Path
 const search = '/search';
 
-// Search Path
+// earning Path
 const earning = '/earning';
+
+// withdraw Path
+const withdraw = '/withdraw';
 
 // Custom
 const success = '/success';

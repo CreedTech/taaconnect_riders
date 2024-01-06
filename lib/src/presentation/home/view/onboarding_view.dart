@@ -58,7 +58,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         backgroundColor: colorWhite,
         centerTitle: true,
         title: Image.asset(
-          'assets/images/logo.png',
+          'assets/images/logo_single.png',
           height: 120.h,
         ),
       ),

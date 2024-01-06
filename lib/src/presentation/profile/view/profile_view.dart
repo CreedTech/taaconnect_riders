@@ -7,7 +7,6 @@ import '../../../core/components/components.dart';
 import '../../../core/helpers/helpers.dart';
 import 'help_view.dart';
 
-
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
@@ -31,102 +30,108 @@ class _ProfileViewState extends State<ProfileView> {
             FractionallySizedBox(
               alignment: Alignment.topCenter,
               heightFactor: 0.3,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 26.w,
-                  vertical: 32.h,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(
-                          Icons.close,
-                          size: 24.sp,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HelpView(),
+              child: Container(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 26.w,
+                    vertical: 32.h,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.arrow_back,
+                            color: colorWhite,
+                            size: 24.sp,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HelpView(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    112.0), // Border radius
+                                color: colorsBlack,
                               ),
-                            );
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(112.0), // Border radius
-                              color: colorsBlack,
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 29.w, vertical: 10.h),
-                              child: Text(
-                                'Help',
-                                style: GoogleFonts.nunito(
-                                  color: colorWhite,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w400,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 29.w, vertical: 10.h),
+                                child: Text(
+                                  'Help',
+                                  style: GoogleFonts.nunito(
+                                    color: colorWhite,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Hello, Solomon!',
-                      style: GoogleFonts.nunito(
-                          fontSize: 28.sp,
-                          fontWeight: FontWeight.w500,
-                          color: colorWhite),
-                    ),
-                  ],
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              // color: Color(0xff3BB54A).withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(100.sp),
+                            ),
+                            child: Image.asset(
+                              'assets/images/driver.png',
+                              width: 40,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Hello, Nasiru!',
+                                style: GoogleFonts.nunito(
+                                    fontSize: 28.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: colorWhite),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'ID: ',
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: colorWhite),
+                                  ),
+                                  Text(
+                                    'EKO54-236',
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: colorWhite),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            // Positioned(
-            //   top: 0,
-            //   left: 0,
-            //   right: 0,
-            //   child:
-            //   Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //       children: [
-            //         Icon(
-            //           Icons.close,
-            //           size: 24.sp,
-            //         ),
-            //         Container(
-            //           decoration: BoxDecoration(
-            //             borderRadius:
-            //                 BorderRadius.circular(112.0), // Border radius
-            //             color: colorsBlack,
-            //           ),
-            //           child: Padding(
-            //             padding: EdgeInsets.symmetric(
-            //                 horizontal: 29.w, vertical: 10.h),
-            //             child: Text(
-            //               'Help',
-            //               style: GoogleFonts.nunito(
-            //                 color: colorWhite,
-            //                 fontSize: 16.sp,
-            //                 fontWeight: FontWeight.w400,
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-
-            // ),
 
             FractionallySizedBox(
               alignment: Alignment.bottomCenter,
@@ -140,12 +145,13 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 39.h, left: 16.w, right: 16.w),
+                  padding:
+                      EdgeInsets.only(top: 39.h, left: 16.w, right: 16.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(bottom: 32.h),
+                        padding: EdgeInsets.only(bottom: 2.h),
                         child: Text(
                           'Account',
                           style: GoogleFonts.nunito(
@@ -156,7 +162,7 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
+                        padding: const EdgeInsets.symmetric(vertical: 3),
                         child: ListTile(
                           minLeadingWidth: 0,
                           contentPadding: EdgeInsets.zero,
@@ -183,16 +189,16 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
+                        padding: const EdgeInsets.symmetric(vertical: 3),
                         child: ListTile(
                           minLeadingWidth: 0,
                           contentPadding: EdgeInsets.zero,
                           leading: const Icon(
-                            Icons.lightbulb_outline,
+                            Icons.directions_car_filled_outlined,
                             color: colorsBlack,
                           ),
                           title: Text(
-                            'About Us',
+                            'My Car Information',
                             style: GoogleFonts.nunito(
                               color: colorsBlack,
                               fontSize: 18,
@@ -200,7 +206,61 @@ class _ProfileViewState extends State<ProfileView> {
                             ),
                           ),
                           onTap: () {
-                            Navigator.pushNamed(context, about_us);
+                            Navigator.pushNamed(context, vehicle);
+                          },
+                          trailing: Icon(
+                            Icons.arrow_forward_ios,
+                            color: colorGray,
+                            size: 20.sp,
+                          ),
+                        ),
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.symmetric(vertical: 3),
+                      //   child: ListTile(
+                      //     minLeadingWidth: 0,
+                      //     contentPadding: EdgeInsets.zero,
+                      //     leading: Image.asset(
+                      //       'assets/icons/money-bag.png',
+                      //       width: 20,
+                      //     ),
+                      //     title: Text(
+                      //       'Earning Details',
+                      //       style: GoogleFonts.nunito(
+                      //         color: colorsBlack,
+                      //         fontSize: 18,
+                      //         fontWeight: FontWeight.w400,
+                      //       ),
+                      //     ),
+                      //     onTap: () {
+                      //       Navigator.pushNamed(context, earning);
+                      //     },
+                      //     trailing: Icon(
+                      //       Icons.arrow_forward_ios,
+                      //       color: colorGray,
+                      //       size: 20.sp,
+                      //     ),
+                      //   ),
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 3),
+                        child: ListTile(
+                          minLeadingWidth: 0,
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(
+                            Icons.lock_outline_sharp,
+                            color: colorsBlack,
+                          ),
+                          title: Text(
+                            'Security',
+                            style: GoogleFonts.nunito(
+                              color: colorsBlack,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(context, forgotPass);
                           },
                           trailing: Icon(
                             Icons.arrow_forward_ios,
@@ -210,7 +270,7 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
+                        padding: const EdgeInsets.symmetric(vertical: 3),
                         child: ListTile(
                           minLeadingWidth: 0,
                           contentPadding: EdgeInsets.zero,
@@ -237,7 +297,7 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
+                        padding: const EdgeInsets.symmetric(vertical: 3),
                         child: ListTile(
                           minLeadingWidth: 0,
                           contentPadding: EdgeInsets.zero,
@@ -264,7 +324,7 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 7),
+                        padding: const EdgeInsets.symmetric(vertical: 3),
                         child: ListTile(
                           minLeadingWidth: 0,
                           contentPadding: EdgeInsets.zero,
@@ -315,21 +375,24 @@ class _ProfileViewState extends State<ProfileView> {
                                             child: Column(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 10.h),
+                                                  padding:
+                                                      EdgeInsets.symmetric(
+                                                          vertical: 10.h),
                                                   child: Column(
                                                     children: [
                                                       Padding(
                                                         padding: EdgeInsets
                                                             .symmetric(
-                                                                vertical: 15.h),
+                                                                vertical:
+                                                                    15.h),
                                                         child: Align(
                                                           alignment: Alignment
                                                               .topCenter,
                                                           child: Text(
                                                             'Confirm Log Out',
-                                                            textAlign: TextAlign
-                                                                .center,
+                                                            textAlign:
+                                                                TextAlign
+                                                                    .center,
                                                             style: GoogleFonts
                                                                 .nunito(
                                                               color:
@@ -345,15 +408,16 @@ class _ProfileViewState extends State<ProfileView> {
                                                       Padding(
                                                         padding: EdgeInsets
                                                             .symmetric(
-                                                                vertical: 10.h),
+                                                                vertical:
+                                                                    10.h),
                                                         child: Column(
                                                           children: [
                                                             ElevatedButton(
-                                                              style:
-                                                                  ElevatedButton
-                                                                      .styleFrom(
+                                                              style: ElevatedButton
+                                                                  .styleFrom(
                                                                 minimumSize:
-                                                                    Size(400.w,
+                                                                    Size(
+                                                                        400.w,
                                                                         50.h),
                                                                 backgroundColor:
                                                                     colorPrimary,
@@ -374,15 +438,13 @@ class _ProfileViewState extends State<ProfileView> {
                                                                 //     .logOut(
                                                                 //         context);
                                                               },
-                                                              child: const Text(
+                                                              child:
+                                                                  const Text(
                                                                 'Confirm',
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
-                                                              )
-                                                                  .normalSized(
-                                                                      16)
-                                                                  .colors(
+                                                              ).normalSized(16).colors(
                                                                       colorWhite),
                                                             ),
                                                             Padding(
@@ -402,9 +464,8 @@ class _ProfileViewState extends State<ProfileView> {
                                                                   textAlign:
                                                                       TextAlign
                                                                           .center,
-                                                                  style:
-                                                                      GoogleFonts
-                                                                          .nunito(
+                                                                  style: GoogleFonts
+                                                                      .nunito(
                                                                     color:
                                                                         colorPrimary,
                                                                     fontSize:

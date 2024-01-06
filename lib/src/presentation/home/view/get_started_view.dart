@@ -22,7 +22,7 @@ class _GetStartedViewState extends State<GetStartedView> {
             child: Column(
               children: [
                 Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/logo_single.png',
                   height: 70.h,
                 ),
                 Image.asset(

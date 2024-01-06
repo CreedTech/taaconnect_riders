@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:taaconnect_riders/src/presentation/auth/login/view/vehicle_documentation.dart';
-import 'package:taaconnect_riders/src/presentation/view/earning.dart';
+import 'package:taaconnect_riders/src/presentation/details/view/delivery_success_view.dart';
+import 'package:taaconnect_riders/src/presentation/details/view/verification_view.dart';
+import 'package:taaconnect_riders/src/presentation/earning/view/earning.dart';
+import 'package:taaconnect_riders/src/presentation/profile/view/vehicle_information_view.dart';
+import 'package:taaconnect_riders/src/presentation/withdraw/view/withdraw_view.dart';
 
 import '../../presentation/auth/login/view/change_phone_number_view.dart';
 import '../../presentation/auth/login/view/change_phone_otp_view.dart';
@@ -12,6 +16,7 @@ import '../../presentation/auth/login/view/otp_view.dart';
 import '../../presentation/auth/login/view/phone_number_otp_view.dart';
 import '../../presentation/auth/login/view/register_view.dart';
 import '../../presentation/auth/login/view/reset_password_view.dart';
+import '../../presentation/details/view/details.dart';
 import '../../presentation/home/view/get_started_view.dart';
 import '../../presentation/home/view/splash_view.dart';
 import '../../presentation/navigation/view/navigation_view.dart';
@@ -162,10 +167,20 @@ class RouterGenerator {
           builder: (context) => const EarningView(),
           settings: const RouteSettings(name: earning),
         );
+      case withdraw:
+        return MaterialPageRoute(
+          builder: (context) => const WithdrawView(),
+          settings: const RouteSettings(name: withdraw),
+        );
       case profile:
         return MaterialPageRoute(
           builder: (context) => const ProfileView(),
           settings: const RouteSettings(name: profile),
+        );
+      case vehicle:
+        return MaterialPageRoute(
+          builder: (context) => const VehicleInformationView(),
+          settings: const RouteSettings(name: vehicle),
         );
       case my_information:
         return MaterialPageRoute(
@@ -209,16 +224,21 @@ class RouterGenerator {
       //     builder: (context) => const SearchView(),
       //     settings: const RouteSettings(name: search),
       //   );
-      // case details:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const DetailsView(),
-      //     settings: const RouteSettings(name: details),
-      //   );
-      // case package_details:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const PackageDetailsView(),
-      //     settings: const RouteSettings(name: package_details),
-      //   );
+      case details:
+        return MaterialPageRoute(
+          builder: (context) => DetailsView(
+            id: arguments as String,
+            status: arguments,
+            pickup: arguments,
+            dropoff: arguments,
+          ),
+          settings: const RouteSettings(name: details),
+        );
+      case verification:
+        return MaterialPageRoute(
+          builder: (context) => const VerificationView(),
+          settings: const RouteSettings(name: verification),
+        );
       // case pickup_terminal:
       //   return MaterialPageRoute(
       //     builder: (context) => const PickupTerminalView(),
@@ -239,11 +259,11 @@ class RouterGenerator {
       //     builder: (context) => const DeliverySuccessView(),
       //     settings: const RouteSettings(name: delivery_success),
       //   );
-      // case delivered:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const DeliveredView(),
-      //     settings: const RouteSettings(name: delivery_success),
-      //   );
+      case delivered:
+        return MaterialPageRoute(
+          builder: (context) => const DeliverySuccessView(),
+          settings: const RouteSettings(name: delivery_success),
+        );
       // case ratings:
       //   return MaterialPageRoute(
       //     builder: (context) => const RatingsView(),
